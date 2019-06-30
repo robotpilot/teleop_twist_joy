@@ -1,0 +1,6 @@
+enable_throttle_button: 32
+enable_throttle_turbo_button: 33
+
+axis_linear: 0
+scale_linear: 0.7
+scale_linear_turbo: 1.5

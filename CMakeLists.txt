@@ -19,7 +19,20 @@ target_link_libraries(${PROJECT_NAME}_node ${PROJECT_NAME} ${catkin_LIBRARIES})
 set_target_properties(${PROJECT_NAME}_node
   PROPERTIES OUTPUT_NAME teleop_node PREFIX "")
 
+add_library(multiple_${PROJECT_NAME} src/multiple_${PROJECT_NAME})
+target_link_libraries(multiple_${PROJECT_NAME} ${catkin_LIBRARIES})
+
+add_executable(multiple_${PROJECT_NAME}_node src/multiple_teleop_node.cpp)
+target_link_libraries(multiple_${PROJECT_NAME}_node multiple_${PROJECT_NAME} ${catkin_LIBRARIES})
+set_target_properties(multiple_${PROJECT_NAME}_node
+  PROPERTIES OUTPUT_NAME multiple_teleop_node PREFIX "")
+
 install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_node
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
+install(TARGETS multiple_${PROJECT_NAME} multiple_${PROJECT_NAME}_node
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})

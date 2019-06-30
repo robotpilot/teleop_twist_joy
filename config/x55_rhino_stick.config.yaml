@@ -1,0 +1,6 @@
+enable_button: 0
+enable_turbo_button: 3
+
+axis_angular: 2
+scale_angular: 0.4
+scale_angular_turbo: 1.0
